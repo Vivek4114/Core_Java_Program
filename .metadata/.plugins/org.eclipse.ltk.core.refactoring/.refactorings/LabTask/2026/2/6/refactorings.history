@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Test01_Java_SQL_New.java&apos; to &apos;javaSQl/src/com.nit.javaSQL&apos;&#x0D;&#x0A;- Original project: &apos;LabTask&apos;&#x0D;&#x0A;- Destination element: &apos;javaSQl/src/com.nit.javaSQL&apos;&#x0D;&#x0A;- Original element: &apos;com.nit.java25feature.Test01_Java_SQL_New.java&apos;" description="Copy compilation unit" destination="=javaSQl/src&lt;com.nit.javaSQL" element1="/src&lt;com.nit.java25feature{Test01_Java_SQL_New.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1770380627203" units="1" version="1.0"/>
+</session>

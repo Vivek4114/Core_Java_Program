@@ -1,0 +1,63 @@
+package com.nit.terminalOperation;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Optional;
+
+record Employee(Integer id,String name, Integer age) {}
+
+public class Program02_Min {
+	
+	public static void main(String[] args) {
+		
+		Employee employee = new Employee(1,"Sunaina" ,21);
+		Employee employee1 = new Employee(2,"Yogeshwari" ,24);
+		Employee employee2 = new Employee(3,"Nikita" ,21);
+		Employee employee3 = new Employee(4, "Niku", 24);
+		Employee employee4 = new Employee(5, "Aakasnsha", 26);
+		
+		Employee employee5 = new Employee(6, "Rachna", 27);
+		Employee employee6 = new Employee(7, "Ketki", 25);
+		Employee employee7 = new Employee(8, "Sanika", 24);
+		Employee employee8 = new Employee(9, "kalpna", 22);
+		
+		ArrayList<Employee> e1 = new ArrayList<Employee>();
+		e1.add(employee);
+		e1.add(employee1);
+		e1.add(employee2);
+		e1.add(employee3);
+		e1.add(employee4);
+		e1.add(employee5);
+		e1.add(employee6);
+		e1.add(employee7);
+		e1.add(employee8);
+		
+		Optional<Employee> min = e1.stream().distinct().max(Comparator.comparing(Employee::age));
+	
+		 min.ifPresent(System.out::println);
+		 
+		 Optional<Employee> max = e1.stream().distinct().max(Comparator.comparing( emp -> emp.name().length()));
+		 
+		 max.ifPresent(System.out::println);
+		 
+		 
+		 
+		 Integer arr[] = {19,39,82,94,29,29,482,273,987,272,389};
+		 
+		  Arrays.stream(arr)
+		 .distinct()
+		 .sorted((e3,e2)-> e2.compareTo(e3))
+		 .skip(1)
+		 .findAny()
+		 .ifPresent(System.out::println);
+		 
+	//	 System.out.println(integer);
+		 
+		
+		
+		
+		
+	}
+
+}

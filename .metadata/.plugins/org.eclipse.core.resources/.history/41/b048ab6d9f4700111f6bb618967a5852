@@ -1,0 +1,29 @@
+package com.nit.practice15quetion;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+//15.  Find the product of the first two elements from an array. 
+//String [] s = {"pat", "tap", "pan", "nap", "Team", "tree", "meat"}; 
+//Output : [[pat, tap], [pan, nap], [Team, meat], [tree]] 
+public class Program17 {
+	
+	public static void main(String[] args) {
+		
+		String [] s = {"pat", "tap", "pan", "nap", "Team", "tree", "meat"};
+		
+	   
+		 Map<Boolean, List<String>> collect = Arrays.stream(s)
+		 .distinct()
+		 .collect(Collectors.partitioningBy(e -> !e.equals(e) && e.matches("[e]+")));
+		 
+		 System.out.println(collect);
+		 
+	   
+	 
+		
+	}
+
+}

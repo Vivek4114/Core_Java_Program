@@ -1,0 +1,18 @@
+package com.nit.Dec5;
+
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class ChangeElement {
+
+	public static void main(String[] args) {
+		List<String> courses = List.of("Java","Python","Dot net", "Go");
+		List<String> courseInUc = courses.stream().
+				map(String::toUpperCase).
+				collect(Collectors.toList());
+		
+		courseInUc.forEach(System.out::println);
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.nit.Dec5;
+
+import java.util.List;
+//Sort a list of name in NSO
+public class NSOrder {
+	public static void main(String[] args) {
+		List<String> names = List.of("bobby","aman","daya","jethalal","Iyer","Babita");
+		
+	}
+}

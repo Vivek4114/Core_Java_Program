@@ -1,0 +1,18 @@
+package com.nit.StreamApi;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Test03_ConvertWords {
+	public static void main(String[] args) {
+		Stream<String> words = Stream.of("albatross", "Rainbow", "Developer", "Dabba Developer");
+		
+	List <String> uppercaseWords = 	words.map(e -> e.toUpperCase()).collect(Collectors.toList());
+	
+	uppercaseWords.forEach(System.out::println);
+		
+		
+	}
+
+}

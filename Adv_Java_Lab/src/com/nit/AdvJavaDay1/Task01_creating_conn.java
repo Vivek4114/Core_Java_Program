@@ -1,0 +1,195 @@
+package com.nit.AdvJavaDay1;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+/*
+
+ * Assignment::Write a jdbc program as follows:
+===========
+Table Name:Employee_Info.
+Table Columns:-empId,empName,empSalary,empAddress,empMailId,empPhNo.
+Note:-Create table Employee_Info from database directly and perform operations based on user choice.(Use Scanner class to take input from user)
+       1.Insert data into Employee Table.
+       2.Retrieve all Employee data.
+       3.Retrieve employee whose name stats with 'S'.
+       4.Retrieve employees whose salary between 10000 to 20000.
+       5.Update employee salary with the help of eid.
+       6.delete employee who is getting maximum salary.
+       7.delete employee whose name ends with 'a';
+       8.Exit.
+Note:Perform these operations contineously until user press 8(Exit).       
+ */
+
+public class Task01_creating_conn {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		Scanner sc = new Scanner(System.in);
+
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		System.out.println("class Loaded ..!");
+
+		Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "c##vivek", "vivek");
+		System.out.println("Connection Establish..!");
+
+//		PreparedStatement pstmt = conn.prepareStatement("""
+//				CREATE TABLE employeeInfo(
+//				empid NUMBER(4),
+//				empName VARCHAR2(15),
+//				empSal NUMBER(7,2),
+//				empAddress VARCHAR2(30),
+//				empMailId VARCHAR2(20),
+//				empPhNO NUMBER(10)
+//
+//				)
+//				"""
+//
+//		);
+//
+//		pstmt.execute();
+
+		Statement pstmt = conn.createStatement();
+		System.out.println("Connection Created..!");
+		System.out.println();
+
+		boolean isLoop = true;
+
+		loop: while (isLoop) {
+
+
+			System.out.println("Enter  1.Insert data into Employee Table.");
+			System.out.println("Enter  2.Retrieve all Employee data..");
+			System.out.println("Enter  3.Retrieve employee whose name stats with 'S'.");
+			System.out.println("Enter  4.Retrieve employees whose salary between 10000 to 20000.");
+			System.out.println("Enter  5.Update employee salary with the help of eid.");
+			System.out.println("Enter  6.delete employee who is getting maximum salary.");
+			System.out.println("Enter  7.delete employee whose name ends with 'a';");
+			System.out.println("Enter  8 For Exit");
+			System.out.println();
+			System.out.println("Enter User Choice For Performing Operation :");
+			int choice = Integer.parseInt(sc.next());
+			
+			switch (choice) {
+
+			case 1:
+
+				System.out.println("Enter the Employee id : ");
+				int empId =Integer.parseInt(sc.next());
+
+				System.out.println("Enter the Employee Name : ");
+				String empName = sc.nextLine();
+				empName = sc.nextLine();
+
+				System.out.println("Enter the Employee Salary : ");
+				double empSal = Double.parseDouble(sc.next());
+
+				System.out.println("Enter the Employee Emp Address : ");
+				String empAddress = sc.nextLine();
+				empAddress = sc.nextLine();
+				System.out.println("Enter the Employee Mail Id : ");
+				String empMailId = sc.nextLine();
+
+				System.out.println("Enter the Employee Employee Phone Number : ");
+				long empPhNo = sc.nextLong();
+
+				pstmt.execute("INSERT INTO employeeInfo(empId,empName,empSal,empAddress,empMailId,empPhNo)"
+						+ "VALUES ( " + empId + ", ' " + empName + "', " + empSal + ", ' " + empAddress + " ', ' "
+						+ empMailId + " ',  " + empPhNo + ")"
+
+				);
+				System.out.println();
+				break;
+
+			case 2:
+				ResultSet rs = pstmt.executeQuery("Select * from employeeInfo");
+
+				while (rs.next()) {
+					System.out.println("" + rs.getInt(1) + " " + rs.getString(2) + " " + rs.getDouble(3) + " "
+							+ rs.getString(4) + " " + rs.getString(5) + " " + rs.getLong(6) + "");
+				}
+				System.out.println();
+
+				break;
+
+			case 3:
+
+				ResultSet rs1 = pstmt.executeQuery(" SELECT * FROM EMPLOYEEINFO WHERE EMPNAME LIKE 's%'");
+
+				while (rs1.next()) {
+					System.out.println("" + rs1.getInt(1) + " " + rs1.getString(2) + " " + rs1.getDouble(3) + " "
+							+ rs1.getString(4) + " " + rs1.getString(5) + " " + rs1.getLong(6) + "");
+				}
+				System.out.println();
+
+				break;
+
+			case 4:
+
+				ResultSet rs2 = pstmt.executeQuery(" SELECT * FROM EMPLOYEEINFO WHERE empSal Between 1000 and 2000");
+
+				while (rs2.next()) {
+					System.out.println("" + rs2.getInt(1) + " " + rs2.getString(2) + " " + rs2.getDouble(3) + " "
+							+ rs2.getString(4) + " " + rs2.getString(5) + " " + rs2.getLong(6) + "");
+				}
+				System.out.println();
+
+				break;
+			case 5:
+				System.out.println("Enter the Updated Salary : ");
+				double empSal2 = Double.parseDouble(sc.next());
+
+				System.out.println("Enter the empId");
+				int eid = Integer.parseInt(sc.next());
+
+				int m1 =  pstmt.executeUpdate(
+						"update EMPLOYEEINFO set empSal = empSal + " + empSal2 + " WHERE empId =  " + eid + " ");
+
+				System.out.println(m1 + " rows  Updated ..!");
+				System.out.println();
+				
+				break;
+
+			case 6:
+
+				int m2 = pstmt.executeUpdate("DELETE FROM  EMPLOYEEINFO WHERE EMPSAL =  ( SELECT MAX(empSal) FROM EMPLOYEEINFO) ");
+
+				 System.out.println(m2 + " Row is Deleted ");
+				 System.out.println();
+
+				break;
+
+			case 7:
+				ResultSet rs5 = pstmt.executeQuery(" SELECT * FROM EMPLOYEEINFO WHERE EMPNAME LIKE '%a'");
+
+				while (rs5.next()) {
+					System.out.println("" + rs5.getInt(1) + " " + rs5.getString(2) + " " + rs5.getDouble(3) + " "
+							+ rs5.getString(4) + " " + rs5.getString(5) + " " + rs5.getLong(6) + "");
+				}
+
+				System.out.println(" Above Query we return the name whos name end a");
+				System.out.println();
+				break;
+
+			case 8:
+				System.out.println("Exited  From the Loop");
+
+				isLoop = false;
+				System.out.println();
+				break loop;
+				
+
+			default:
+				System.out.println("Invalid Input ");
+				System.out.println();
+
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,136 @@
+package com.nit.practice15quetion;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+/*
+ 
+
+
+24. Find common elements between two arrays
+
+Input:
+arr1 = {1,2,3,4}, arr2 = {3,4,5,6}
+Output:
+[3, 4]
+
+25. Find missing number in an array (1 to n)
+
+Input:
+{1,2,3,5}
+Output:
+4
+
+26. Find the frequency of each character (case-insensitive)
+
+Input:
+"aAbBcCaa"
+Output:
+{a=4, b=2, c=2}
+
+27. Capitalize first letter of each word
+
+Input:
+"java streams api"
+Output:
+"Java Streams Api"
+
+28. Find the second smallest number in an array
+
+Input:
+{5,1,2,3,4}
+Output:
+2
+
+29. Check if a string contains only digits
+
+Input:
+"12345"
+Output:
+true
+
+30. Merge two sorted arrays
+
+Input:
+{1,3,5}, {2,4,6}
+Output:
+{1,2,3,4,5,6}
+
+31. Find all substrings of a string
+
+Input:
+"abc"
+Output:
+[a, b, c, ab, bc, abc]
+
+32. Rotate an array to the right by k steps
+
+Input:
+arr = {1,2,3,4,5}, k = 2
+Output:
+{4,5,1,2,3}
+
+33. Find the first unique word in a sentence
+
+Input:
+"apple banana apple orange banana mango"
+Output:
+orange
+
+34. Replace all vowels with '*'
+
+Input:
+"Hello World"
+Output:
+"H*ll* W*rld"
+
+35. Find the maximum occurring word
+
+Input:
+"one two two three three three"
+Output:
+three
+
+36. Check if array is palindrome
+
+Input:
+{1,2,3,2,1}
+Output:
+true
+
+*/
+
+
+
+
+/*23. Find the sum of digits in a string
+
+Input:
+"a1b2c3d4"
+Output:
+10
+*/
+
+
+public class Program29 {
+	
+	public static void main(String[] args) {
+		 
+	String s = 	"a1b2csdkfjs3234243d4";
+		 
+	   int intValue = Arrays.stream(s.split(""))
+	 .filter(v -> v.matches("\\d"))
+	 .map(a -> Integer.parseInt(a))
+	 .reduce(0, (a,b)-> a+b).intValue();
+	   
+	   System.out.println(intValue);
+	 
+	 
+	 
+		
+	}
+
+}

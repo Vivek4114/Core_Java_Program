@@ -1,0 +1,15 @@
+package com.nit.StreamProg;
+
+import java.util.List;
+
+public class Program01_TraverseEle {
+	
+	public static void main(String[] args) {
+		
+			List<String> li = List.of("Hi", "My", "Name", "Vivek");
+			li.stream().forEach(System.out::println);
+			
+			li.parallelStream().forEach(System.out::println);
+	}
+
+}

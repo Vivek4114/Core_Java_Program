@@ -1,0 +1,19 @@
+package com.nit.practice15quetion;
+
+import java.util.Arrays;
+
+//Remove duplicates from the string and return in the same order. 
+//	      input: String s = "dabcadefg"; 
+//	      output: dabcdefg
+public class Program02 {
+
+	public static void main(String[] args) {
+
+		String s = "dabcadefg";
+
+		String[] split = s.split("");
+		System.out.println(Arrays.toString(split));
+
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.nit.Dec5;
+
+import java.util.List;
+import java.util.stream.Collectors;
+//Sort a list of name in NSO
+public class NSOrder {
+	public static void main(String[] args) {
+		List<String> names = List.of("bobby","aman","daya","jethalal","iyer","babita");
+		
+		List<String> sortedNames =	names.stream().sorted().collect(Collectors.toList());
+		sortedNames.forEach(System.out::println);
+		
+	}
+}

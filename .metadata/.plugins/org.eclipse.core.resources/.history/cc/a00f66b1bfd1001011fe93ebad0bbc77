@@ -1,0 +1,13 @@
+package com.nit.Dec5;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class ReverseList {
+	public static void main(String[] args) {
+		List<Integer> intList = Arrays.asList(292, 24,64,95,45,66,19);
+		
+		list<integer> revList =intList.reversed();
+		System.out.println(intList);
+	}
+}

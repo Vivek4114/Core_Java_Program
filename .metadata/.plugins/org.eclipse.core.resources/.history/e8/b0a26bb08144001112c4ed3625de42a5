@@ -1,0 +1,13 @@
+package com.nit.staticMethodRef;
+
+interface arbitary<T,V,U,R>{
+	R myfunction(T t, U u, V v);
+}
+
+public class Program06_arbMethRef {
+
+	public static void main(String[] args) {
+		
+		
+	}
+}

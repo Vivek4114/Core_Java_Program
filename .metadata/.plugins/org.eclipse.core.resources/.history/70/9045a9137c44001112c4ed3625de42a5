@@ -1,0 +1,20 @@
+package com.nit.staticMethodRef;
+
+
+class Animal{
+	public Animal() {
+		System.out.println("Animal.Animal( Constructor )");
+	}
+	
+	public void checkCondition() {
+		System.out.println("Animal.checkCondition()");
+	}
+}
+
+public class Program03_ConstructorRef {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,33 @@
+package com.nit.StreamProg;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+//3. Extract employee names from a list of Employee objects. 
+//4. Convert a list of numbers into their string representation.
+record Book(int id, String name) {}
+
+public class Program01_ExtractName {
+	
+	public static void main(String[] args) {
+		
+		ArrayList<Book> liBooks = new ArrayList<Book>();
+		liBooks.add(new Book(1,"java"));
+		liBooks.add(new Book(2,"python"));
+		liBooks.add(new Book(3,".Net"));
+		liBooks.add(new Book(4,"DevOps"));
+		
+		
+		
+		
+		List<Integer> collect = liBooks.stream().map(Book::id).collect(Collectors.toList());
+		System.out.println(collect);
+		
+		
+		List<Integer> of = List.of(1,2,4,5,6,7,7,88,8,9);
+		List<String> collect2 = of.stream().map(String::valueOf).collect(Collectors.toList());
+		System.out.println(collect2);
+	}
+
+}

@@ -1,0 +1,47 @@
+package com.nit.practice15quetion;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+
+
+public class Program07 {
+	
+	public static void main(String[] args) {
+		
+		String s = "I am learning streams API in Java"; 
+ 
+		  Map<String, Long> collect = Arrays
+		  .stream(s.split(" "))
+		 .collect(
+				 Collectors.toMap(
+						 e -> e,
+						 v ->{
+						 
+				LOng m = 		 v.chars()
+						 .filter(m -> "aeiouAEIOU".indexOf(m) != -1 )
+						 .count();
+						 
+						 if(m ==2 ) {
+							 return v;;
+						 }
+						 
+						 }
+		 ));
+  System.out.println(collect);
+	 
+		
+		 
+	 
+		
+		
+	 
+		
+	 
+		
+		
+	}
+
+}

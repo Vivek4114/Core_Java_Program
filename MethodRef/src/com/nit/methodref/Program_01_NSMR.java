@@ -1,0 +1,34 @@
+package com.nit.methodref;
+
+@FunctionalInterface
+interface Worker{
+	
+	   void work();
+	
+}
+
+class Employee  {
+
+	public   void Sal() {
+		System.out.println("Worker are working");
+	}
+	
+}
+
+
+public class Program_01_NSMR {
+	
+	public static void main(String[] args) {
+		
+		 Worker w1 = () -> System.out.print("Employee is working");
+		 w1.work();
+		 
+		 System.out.println("\n=========================");
+		 Employee e = new Employee();
+		 Worker w2  =  e::Sal;
+		 w2.work();
+		
+		 
+	}
+
+}

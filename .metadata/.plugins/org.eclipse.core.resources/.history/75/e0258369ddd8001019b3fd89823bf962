@@ -1,0 +1,5 @@
+package com.nit.PatternPragram;
+
+public enum Pattern1 {
+
+}

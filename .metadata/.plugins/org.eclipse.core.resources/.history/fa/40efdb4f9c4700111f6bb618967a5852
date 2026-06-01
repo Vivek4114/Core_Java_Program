@@ -1,0 +1,35 @@
+package com.nit.practice15quetion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+//13.  Given an array of Integers, group the numbers by the range in which they belong.  
+//input: int []arr= {2, 3, 10, 14, 20, 24, 30, 34, 40, 44, 50, 54}; 
+//output: {0=[2, 3], 10=[10, 14], 20=[20, 24], 30=[30, 34], 40=[40, 44], 50=[50, 54]}
+public class Program15 {
+	
+	public static void main(String[] args) {
+		
+		int []arr= {2, 3, 10, 14, 20, 24, 30, 34, 40, 44, 50, 54}; 
+		
+		 
+		 List<int[]> asList = Arrays.asList(arr);
+		 
+		 System.out.println(asList.getFirst());
+		
+		
+		
+		 
+		 
+	   
+	 
+		
+	}
+
+}

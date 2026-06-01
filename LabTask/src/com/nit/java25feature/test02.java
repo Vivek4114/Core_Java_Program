@@ -1,0 +1,214 @@
+package com.nit.java25feature;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class test02 {
+
+	 static {
+		 try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		 } catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		 }
+			System.out.println("class Loaded ..!");
+			
+	 }
+	 private static Connection conn = null;
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+		Scanner sc = new Scanner(System.in);
+
+		
+
+		  conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "c##vivek", "vivek");
+		System.out.println("Connection Establish..!");
+
+
+	//	Statement pstmt = conn.createStatement();
+		System.out.println("Connection Created..!");
+		System.out.println();
+
+		boolean isLoop = true;
+
+		loop: while (isLoop) {
+			System.out.println("Enter  9 : create Table ");
+			System.out.println("Enter  1.Insert data into Employee Table.");
+			System.out.println("Enter  2.Retrieve all Employee data..");
+			System.out.println("Enter  3.Retrieve employee whose name stats with 'S'.");
+			System.out.println("Enter  4.Retrieve employees whose salary between 10000 to 20000.");
+			System.out.println("Enter  5.Update employee salary with the help of eid.");
+			System.out.println("Enter  6.delete employee who is getting maximum salary.");
+			System.out.println("Enter  7.delete employee whose name ends with 'a';");
+			System.out.println("Enter  8 For Exit");
+			System.out.println();
+			System.out.println("Enter User Choice For Performing Operation :");
+			int choice = Integer.parseInt(sc.next());
+
+			switch (choice) {
+			
+			case 9 : 
+				
+				PreparedStatement pstmt = conn.prepareStatement("""
+				CREATE TABLE employeeInfo(
+				empid NUMBER(4),
+				empName VARCHAR2(15),
+				empSal NUMBER(7,2),
+				empAddress VARCHAR2(30),
+				empMailId VARCHAR2(20),
+				empPhNO NUMBER(10)
+	
+				)
+				"""
+	
+		);
+	
+		pstmt.execute();
+		System.out.println("Table is Created");
+			break;
+			
+
+			case 1:
+				
+
+				System.out.println("Enter the Employee id : ");
+				int empId = Integer.parseInt(sc.next());
+
+				System.out.println("Enter the Employee Name : ");
+				String empName = sc.nextLine();
+				empName = sc.nextLine();
+
+				System.out.println("Enter the Employee Salary : ");
+				double empSal = Double.parseDouble(sc.next());
+
+				System.out.println("Enter the Employee Emp Address : ");
+				String empAddress = sc.nextLine();
+				empAddress = sc.nextLine();
+				System.out.println("Enter the Employee Mail Id : ");
+				String empMailId = sc.nextLine();
+
+				System.out.println("Enter the Employee Employee Phone Number : ");
+				long empPhNo = sc.nextLong();
+
+		PreparedStatement query1 = conn.prepareStatement("INSERT INTO employeeInfo(empId,empName,empSal,empAddress,empMailId,empPhNo)"
+						+ "VALUES ( ?, ?,?,?,? ,? )"
+
+				);
+		
+				query1.setInt(1, empId);
+				query1.setString(2, empName);
+				query1.setDouble(3, empSal);
+				query1.setString(4, empAddress);
+				query1.setString(5,empMailId);
+				query1.setLong(6,empPhNo);
+				int que1 = query1.executeUpdate();
+				if(que1 > 0) System.out.println("Data Inserted SuccessFully " + que1);
+				
+				System.out.println();
+				break;
+
+			case 2:
+				PreparedStatement query2  = conn.prepareStatement("Select * from employeeInfo");
+				
+				ResultSet rs = query2.executeQuery();
+				
+
+				while (rs.next()) {
+					System.out.println("" + rs.getInt(1) + " " + rs.getString(2) + " " + rs.getDouble(3) + " "
+							+ rs.getString(4) + " " + rs.getString(5) + " " + rs.getLong(6) + "");
+				}
+				System.out.println();
+
+				break;
+
+			case 3:
+
+				PreparedStatement query3 = conn.prepareStatement(" SELECT * FROM EMPLOYEEINFO WHERE EMPNAME LIKE 's%'");
+				
+				ResultSet rs1 = query3.executeQuery();
+				while (rs1.next()) {
+					System.out.println("" + rs1.getInt(1) + " " + rs1.getString(2) + " " + rs1.getDouble(3) + " "
+							+ rs1.getString(4) + " " + rs1.getString(5) + " " + rs1.getLong(6) + "");
+				}
+				System.out.println();
+
+				break;
+
+			case 4:
+
+			 PreparedStatement query4 = conn.prepareStatement(" SELECT * FROM EMPLOYEEINFO WHERE empSal Between 1000 and 2000");
+			 ResultSet rs2 = query4.executeQuery();
+			 
+				while (rs2.next()) {
+					System.out.println("" + rs2.getInt(1) + " " + rs2.getString(2) + " " + rs2.getDouble(3) + " "
+							+ rs2.getString(4) + " " + rs2.getString(5) + " " + rs2.getLong(6) + "");
+				}
+				System.out.println();
+
+				break;
+			case 5:
+				System.out.println("Enter the Updated Salary : ");
+				double empSal2 = Double.parseDouble(sc.next());
+
+				System.out.println("Enter the empId");
+				int eid = Integer.parseInt(sc.next());
+
+				PreparedStatement query5 = conn.prepareStatement (
+						"update EMPLOYEEINFO set empSal = empSal + " + empSal2 + " WHERE empId =  " + eid + " ");
+
+				int m1 = query5.executeUpdate();
+				
+				System.out.println(m1 + " rows  Updated ..!");
+				System.out.println();
+
+				break;
+
+			case 6:
+
+				PreparedStatement query6 = conn.prepareStatement(
+						"DELETE FROM  EMPLOYEEINFO WHERE EMPSAL =  ( SELECT MAX(empSal) FROM EMPLOYEEINFO) ");
+				
+				int m2 = query6.executeUpdate();
+				
+				System.out.println(m2 + " Row is Deleted ");
+				System.out.println();
+
+				break;
+
+			case 7:
+				PreparedStatement query7 = conn.prepareStatement(" SELECT * FROM EMPLOYEEINFO WHERE EMPNAME LIKE '%a'");
+				ResultSet rs5 = query7.executeQuery();
+				
+				while (rs5.next()) {
+					System.out.println("" + rs5.getInt(1) + " " + rs5.getString(2) + " " + rs5.getDouble(3) + " "
+							+ rs5.getString(4) + " " + rs5.getString(5) + " " + rs5.getLong(6) + "");
+				}
+
+				System.out.println(" Above Query we return the name whos name end a");
+				System.out.println();
+				break;
+
+			case 8:
+				System.out.println("Exited  From the Loop");
+
+				isLoop = false;
+				System.out.println();
+				break loop;
+
+			default:
+				System.out.println("Invalid Input ");
+				System.out.println();
+
+			}
+
+		}
+
+	}
+
+}

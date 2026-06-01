@@ -1,0 +1,45 @@
+package com.nit.StreamProg;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class Program05_Optional {
+	public static void main(String[] args) {
+
+//		int arr[] = {};
+//		
+//		  OptionalDouble avg = Arrays.stream(arr).average();
+//		System.out.println(avg.orElseGet(()->  (int)(  Math.random() * 100)));
+//		
+
+		int ar[] = { 2,3,4,5,6,7,8,9 };
+
+//	  IntStream peek = Arrays.stream(ar).distinct().sorted().peek(s -> System.out.println(s))
+//				.map(s -> s*s)
+//				.peek(v -> System.out.println(v + " "));
+//	  System.out.println(peek.findFirst());
+//				;
+//		//System.out.println(peek);
+
+//		List<String> asList = Arrays.asList("Ramuj", "Tanvi", "Janvi", "vikas", "Ram", "lak");
+//
+//		List<String> list = asList.stream().filter(s -> s.length() > 4).peek(s -> System.out.println("Filter Name : " + s.toLowerCase()))
+//				.map(v -> v.toUpperCase()).peek(k -> System.out.println("Mapped : " + k)).toList();
+//		
+//		System.out.println(list)
+
+		Arrays.stream(ar)
+		.distinct()
+		.filter(s -> s%2 == 0)
+		.peek(v -> System.out.println( " Before Squre"+ v ))
+		.map(s -> s * s )
+		.peek(m -> System.out.println("After Sorting : "+ m))
+		.boxed()
+		.collect(Collectors.toList());
+	}
+
+}

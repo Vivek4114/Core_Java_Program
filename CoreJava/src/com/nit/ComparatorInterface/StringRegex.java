@@ -1,0 +1,73 @@
+package com.nit.ComparatorInterface;
+
+import java.util.regex.PatternSyntaxException;
+
+class InvalidPasswordException extends Exception {
+	InvalidPasswordException(String msg){
+		super(msg);
+	}
+}
+
+public class StringRegex {
+	public static void main(String[] args) {
+//		String regex = "^(?=.*[A-Z])"
+//		        + "(?=.*[a-z])"
+//		        + "(?=.*\\d)"
+//		        + "(?=.*[@#!$*&])"
+//		        + "[A-Za-z0-9@#!$*&]{6,}$";
+//
+//		
+//		String pwd  = "Vivek@!$234";
+//		
+//		try {
+//		System.out.println(pwd.matches(regex));
+//		}
+//		catch(PatternSyntaxException e) {
+//			e.getMessage();
+//		
+		boolean upperCase = false;
+		boolean smallletter = false;
+		boolean digit = false;
+		boolean symbol = false;
+		
+		String pwd = "VVVi1234";
+		
+		try {
+		
+		if(pwd.length() >=6 ){
+			for(int i = 0; i<pwd.length(); i++) {
+				
+				if(pwd.charAt(i) >= 'A' && pwd.charAt(i) <= 'Z') {
+					upperCase = true;
+				}
+				else if(pwd.charAt(i) >= 'a' && pwd.charAt(i) <= 'z') {
+					smallletter =true;
+				}
+				else if(pwd.charAt(i) >= '0' && pwd.charAt(i) <= '9') {
+					digit = true;
+				}
+				else if(pwd.charAt(i) == '@'  || pwd.charAt(i) == '#' || pwd.charAt(i) == '$' || pwd.charAt(i) == '*' ) {
+					symbol = true;
+				}
+			}
+			
+			if(!upperCase) throw new InvalidPasswordException("Password contains At least one UpperCase  letter");
+			if(!smallletter) throw new InvalidPasswordException("Password contains At least one Small letter");	
+			if(!digit) throw new InvalidPasswordException("Password contains At least one Number digt");		
+			if(!symbol) throw new InvalidPasswordException("Password contains At least one Symbol");
+			
+		}
+		else {
+				throw new InvalidPasswordException("Password is not 6 diit");
+			}
+			
+		
+		
+		}
+		catch(InvalidPasswordException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+	}
+}

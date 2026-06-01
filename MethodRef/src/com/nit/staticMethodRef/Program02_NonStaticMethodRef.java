@@ -1,0 +1,30 @@
+
+package com.nit.staticMethodRef;
+
+
+interface Trainer{
+	void getTraining(String name, int exp);
+}
+
+class nonStatic{
+	
+	public void trainerInfo(String name, int ex) {
+		System.out.println("Trainer Name : "+ name + " Experience : "+ ex);
+		
+	}
+}
+
+public class Program02_NonStaticMethodRef {
+
+	public static void main(String[] args) {
+		
+		Trainer t = (a,b) -> System.out.println("Name Is : "+ a + " Exp is :  " + b);
+		t.getTraining("Vivek", 5);
+		
+		System.out.println("==================="); 
+		
+		Trainer t1 = new nonStatic()::trainerInfo;
+		t1.getTraining("tejas", 7);
+		
+	}
+}

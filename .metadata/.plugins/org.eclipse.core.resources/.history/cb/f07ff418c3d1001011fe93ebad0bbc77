@@ -1,0 +1,30 @@
+package com.nit.Dec5;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class CheckListPalindrome {
+	public static void main(String[] args) {
+		List<Integer> intList = new ArrayList<>(Arrays.asList(292, 24, 64, 95, 45, 66, 19));
+		
+		for(int i= 0; i<intList.size(); i++) {
+			
+			int temp = intList.get(i);
+			int rev = 0;
+			while(temp!= 0) {
+				int n = temp%10;
+				rev += n;
+				temp = temp/10;
+			}
+			
+			if(rev == intList.get(i)) {
+				System.out.print(i +  " ");
+				 
+			}
+			
+			
+		}
+	}
+
+}

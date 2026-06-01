@@ -1,0 +1,16 @@
+package com.nit.Day2;
+
+public class Demo {
+	 
+    public static void main(String[] args)  {
+
+        String javaVersion = System.getProperty("java.version");
+        String javaVendor  = System.getProperty("java.vendor");
+        String javaHome    = System.getProperty("java.home");
+
+        System.out.println("Java Version : " + javaVersion);
+        System.out.println("Java Vendor  : " + javaVendor);
+        System.out.println("Java Home    : " + javaHome);
+    }
+}
+

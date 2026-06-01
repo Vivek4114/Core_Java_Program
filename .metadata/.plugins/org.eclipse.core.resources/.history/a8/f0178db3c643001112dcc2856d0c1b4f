@@ -1,0 +1,29 @@
+package com.nit.methodref;
+
+interface Worker{
+	
+	public static void work() {
+		System.out.println("hellow");
+	}
+	
+}
+
+class Employee  {
+
+	public static void work() {
+		System.out.println("Worker are working");
+	}
+	
+}
+
+
+public class Program_01_NSMR {
+	
+	public static void main(String[] args) {
+		
+		 
+		
+		 
+	}
+
+}

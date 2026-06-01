@@ -1,0 +1,81 @@
+package com.nit.practice15quetion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+/*
+ 
+
+
+32. Rotate an array to the right by k steps
+
+Input:
+arr = {1,2,3,4,5}, k = 2
+Output:
+{4,5,1,2,3}
+
+33. Find the first unique word in a sentence
+
+Input:
+"apple banana apple orange banana mango"
+Output:
+orange
+
+34. Replace all vowels with '*'
+
+Input:
+"Hello World"
+Output:
+"H*ll* W*rld"
+
+35. Find the maximum occurring word
+
+Input:
+"one two two three three three"
+Output:
+three
+
+36. Check if array is palindrome
+
+Input:
+{1,2,3,2,1}
+Output:
+true
+
+*/
+
+/* 
+31. Find all substrings of a string
+
+Input:
+"abc"
+Output:
+[a, b, c, ab, bc, abc]
+*/
+
+class Program37 {
+	public static void main(String[] args) {
+		
+		String s = "abc";
+
+		List<String> collect = IntStream.rangeClosed(1, s.length())
+		        .boxed()
+		        .flatMap(i ->
+		                IntStream.range(0, s.length() - i + 1)
+		                        .mapToObj(j -> s.substring(j, j + i)))
+		        .collect(Collectors.toList());
+
+		System.out.println(collect);
+	 
+
+	}
+}

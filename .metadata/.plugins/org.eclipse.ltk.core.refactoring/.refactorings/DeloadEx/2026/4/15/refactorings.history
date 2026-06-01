@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;PrintOddEven.java&apos; to &apos;com.nit.interthread.PrintOddEven.java&apos;&#x0D;&#x0A;- Original project: &apos;DeloadEx&apos;&#x0D;&#x0A;- Destination element: &apos;com.nit.interthread.PrintOddEven.java&apos;&#x0D;&#x0A;- Original element: &apos;com.nit.interthread.PrintOddEven.java&apos;" description="Copy compilation unit" destination="/src&lt;com.nit.interthread{PrintOddEven.java" element1="/src&lt;com.nit.interthread{PrintOddEven.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1775641517882" units="1" version="1.0"/>
+</session>

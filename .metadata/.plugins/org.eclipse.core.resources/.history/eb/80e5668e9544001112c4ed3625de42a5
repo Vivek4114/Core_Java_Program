@@ -1,0 +1,7 @@
+package com.nit.terminalOperation;
+
+record Employee(Integer id,String name, Integer age)
+
+public class Program02_Min {
+
+}

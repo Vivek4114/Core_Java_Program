@@ -1,0 +1,14 @@
+package com.nit.staticMethodRef;
+
+
+class Student{
+	
+}
+
+public class Program04_constructroRef {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.nit.Dec5;
+
+import java.util.stream.Stream;
+
+//write a program to crate two differnt stream element then merge them and display all the 
+//element. 
+public class MergerStream {
+	public static void main(String[] args) {
+		Stream<String> stream1 = Stream.of("Vivek", "Gautam");
+		Stream<String> stream2 = Stream.of("Dhule");
+	 
+		Stream<String> cat = Stream.concat(stream1,stream2);
+		
+	}
+}

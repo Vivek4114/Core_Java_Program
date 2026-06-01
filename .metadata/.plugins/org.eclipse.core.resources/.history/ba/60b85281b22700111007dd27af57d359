@@ -1,0 +1,23 @@
+package com.nit.deadlockSituation;
+
+
+class Test1 extends  Runnable {
+	public void run() {
+		
+	}
+}{
+	
+	
+}
+
+class Test2 extends Thread{
+	
+}
+
+public class DeadLockProg {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

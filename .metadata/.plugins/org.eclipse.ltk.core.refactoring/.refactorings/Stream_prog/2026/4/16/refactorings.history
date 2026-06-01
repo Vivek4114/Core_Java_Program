@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Prog3_EmployeeWhichHave25TSalary.java&apos; to &apos;com.nit.stream_prog1.Prog4_ListOfListsProg.java&apos;&#x0D;&#x0A;- Original project: &apos;Stream_prog&apos;&#x0D;&#x0A;- Destination element: &apos;com.nit.stream_prog1.Prog4_ListOfListsProg.java&apos;&#x0D;&#x0A;- Original element: &apos;com.nit.stream_prog1.Prog3_EmployeeWhichHave25TSalary.java&apos;" description="Copy compilation unit" destination="/src&lt;com.nit.stream_prog1{Prog4_ListOfListsProg.java" element1="/src&lt;com.nit.stream_prog1{Prog3_EmployeeWhichHave25TSalary.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1776256448946" units="1" version="1.0"/>
+</session>

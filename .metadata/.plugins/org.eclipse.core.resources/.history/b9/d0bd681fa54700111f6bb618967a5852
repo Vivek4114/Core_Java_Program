@@ -1,0 +1,25 @@
+package com.nit.practice15quetion;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+ //2. Sum of Digits in All Numbers
+//List<Integer> list = Arrays.asList(12, 34, 56);
+//output : 21
+
+public class Program19 {
+	
+	public static void main(String[] args) {
+		List<Integer> list = Arrays.asList(12, 34, 56);
+		 
+		list.stream().flatMap(n -> String.valueOf(n).chars().mapToObj(c -> c-'0'))
+		.reduce(0,Integer::sum);
+		
+	 
+		
+	}
+
+}

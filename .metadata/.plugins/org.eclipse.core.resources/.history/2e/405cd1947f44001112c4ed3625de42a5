@@ -1,0 +1,27 @@
+package com.nit.staticMethodRef;
+
+import java.util.function.Function;
+
+class Student{
+	private String name;
+
+	public Student(String name) {
+		super();
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + "]";
+	}
+	
+}
+
+public class Program04_constructroRef {
+	
+	public static void main(String[] args) {
+		
+		Function<String, Student> fn = Student::new;
+		
+	}
+}

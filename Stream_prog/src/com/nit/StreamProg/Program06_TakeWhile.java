@@ -1,0 +1,25 @@
+package com.nit.StreamProg;
+
+import java.util.*;
+import java.util.stream.Stream;
+
+public class Program06_TakeWhile {
+	
+	public static void main(String[] args) {
+		
+		 List<Integer> list = List.of(30,30,19,39,73,55,24);
+		//of.takeWhile(s -> s >30).forEach(System.out::println);
+		list.stream().takeWhile(s -> s %2 == 0).forEach(System.out::println);
+		
+		System.out.println("============================");
+		list.stream().dropWhile(s-> s > 20).forEach(System.out::println);
+		System.out.println("============================");
+		
+		
+		Stream<Integer> num = Stream.of(10,21,45,77,95,5,7,2,4,5,5,55,8,3);
+		
+		num.dropWhile( n -> n>4).forEach(System.out::println);
+		
+	}
+
+}

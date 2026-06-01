@@ -1,0 +1,169 @@
+package com.nit.java25feature;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class Test01_JavaSQL {
+
+	static {
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Class Loaded..!");
+
+	}
+
+	private static Connection conn = null;
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "c##vivek", "vivek");
+		System.out.println("Connection Eastalblish..!");
+
+		Scanner sc = new Scanner(System.in);
+		boolean isLoop = true;
+		Statement stmt = conn.createStatement();
+
+		while (isLoop) {
+
+			System.out.print("JAVA-SQL>");
+
+			StringBuilder query = new StringBuilder();
+			int count = 1;
+			boolean queryLoop = true;
+			while (queryLoop) {
+				String line = sc.nextLine();
+				query.append(line).append("\n");
+
+				if (line.trim().endsWith(";")) {
+					queryLoop = false;
+
+				} else {
+
+					System.out.print(" " + (++count) + " ");
+				}
+
+			}
+			String newQuery = null;
+			try {
+				newQuery = query.toString().trim();
+			} catch (Exception e) {
+				System.out.println("Please Check Syntax");
+			}
+
+			String newQuery1 = newQuery.toUpperCase();
+			String newQuery3 = newQuery1.substring(0, newQuery1.length() - 1);
+
+			if (newQuery3.contains("SELECT")) {
+
+				ResultSet rs = stmt.executeQuery(newQuery3);
+				ResultSetMetaData rsmd = rs.getMetaData();
+				int columnCount = rsmd.getColumnCount();
+				int maxGap;
+				String columName;
+
+				for (int i = 1; i <= columnCount; i++) {
+
+					if (rsmd.getColumnTypeName(i).equalsIgnoreCase("VARCHAR2")) {
+
+						columName = rsmd.getColumnName(i);
+
+						maxGap = Math.max(columName.length(), rsmd.getPrecision(i));
+						System.out.printf("%-" + maxGap + "s ", columName);
+					} else {
+						columName = rsmd.getColumnName(i);
+
+						maxGap = Math.max(columName.length(), rsmd.getPrecision(i));
+						System.out.printf("%" + maxGap + "s ", columName);
+					}
+
+				}
+
+				System.out.println();
+				for (int i = 1; i <= columnCount; i++) {
+
+					columName = rsmd.getColumnName(i);
+					maxGap = Math.max(columName.length(), rsmd.getPrecision(i));
+
+					for (int j = 1; j <= maxGap; j++) {
+						System.out.printf("%s", "-");
+					}
+					System.out.print(" ");
+
+				}
+				System.out.println();
+
+				rs.next();
+
+				do {
+
+					for (int i = 1; i <= columnCount; i++) {
+						columName = rsmd.getColumnName(i);
+						maxGap = Math.max(columName.length(), rsmd.getPrecision(i));
+						if (rsmd.getColumnTypeName(i).equalsIgnoreCase("VARCHAR2")) {
+							System.out.printf("%-" + maxGap + "s ", rs.getString(i));
+						} else {
+							System.out.printf("%" + maxGap + "s ", rs.getString(i));
+
+						}
+					}
+					System.out.println();
+				} while (rs.next());
+			} else if (newQuery3.startsWith("INSERT")) {
+
+				int insertedRow = stmt.executeUpdate(newQuery3);
+
+				System.out.println(insertedRow + " Rows Inserted SuccessFully");
+			} else if (newQuery3.startsWith("DELETE")) {
+				int deleteRow = stmt.executeUpdate(newQuery3);
+				System.out.println(deleteRow + " Rows Delete  SuccessFully");
+			} else if (newQuery3.startsWith("CREATE")) {
+				System.out.println("Table Created SuccessFully");
+			} else if (newQuery3.startsWith("DESC") || newQuery.startsWith("DESCRIBE")) {
+
+				String tableName = newQuery3.substring(newQuery3.indexOf(" "), newQuery3.length());
+
+				System.out.println(tableName);
+
+				String newQuery4 = "SELECT COLUMN_NAME, DATA_TYPE, DATA_LENGTH  FROM USER_TAB_COLUMNS  WHERE TABLE_NAME = ' "
+						+ tableName.toUpperCase() + "' ORDER BY COLUMN_ID";
+
+				ResultSet rs = stmt.executeQuery(newQuery4);
+				ResultSetMetaData rsmd = rs.getMetaData();
+				int columnCount = rsmd.getColumnCount();
+
+				rs.next();
+
+				do {
+					for (int i = 1; i <= columnCount; i++) {
+
+						System.out.println(rs.getString(i));
+					}
+
+				} while (rs.next());
+
+			}
+
+			else {
+				System.out.println("Invalid Query");
+			}
+
+			newQuery3 = "";
+			if (newQuery3.equalsIgnoreCase("exit;")) {
+				isLoop = false;
+			}
+
+		}
+
+	}
+}

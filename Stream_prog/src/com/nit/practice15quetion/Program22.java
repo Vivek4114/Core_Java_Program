@@ -1,0 +1,46 @@
+package com.nit.practice15quetion;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+/*
+
+
+16. Check if two strings are anagrams
+
+Input:
+s1 = "listen", s2 = "silent"
+Output:
+true
+
+ 
+*/
+
+public class Program22 {
+	
+	public static void main(String[] args) {
+		 
+		String s1 = "silent";
+		String s2 = "listen";
+		
+		  String str1 = Arrays.stream(s1.split("")).sorted().collect(Collectors.joining());
+		  String str2 = Arrays.stream(s2.split("")).sorted().collect(Collectors.joining());
+		
+		boolean equals = str1.equals(str2);
+		
+		if(equals) {
+			System.out.println(true);
+		}
+		else {
+			System.out.println(false);
+			
+		}
+		
+		
+		 
+		
+	
+
+		
+	}
+
+}

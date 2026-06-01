@@ -1,0 +1,37 @@
+package com.nit.MockPreparetion;
+
+public class SelectionSort {
+	public static void main(String[] args) {
+		int arr[] = { 12, 44, 23,44,55, 7, 28, 282};
+		System.out.println("Printing array Before Sorting ");
+		for(int i = 0; i< arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		
+		for(int i = 0; i<arr.length; i++) {
+			int minIndex = arr[i];
+			
+			for(int j = i+1; j<arr.length; j++) {
+				
+				if(arr[j] > arr[minIndex]) {
+					arr[minIndex] = arr[j];
+				}
+			}
+			
+			int temp = arr[minIndex];
+			arr[minIndex] = arr[i];
+			arr[i] = temp;
+			
+		}
+		
+		
+		
+		System.out.println("\nPrinting array After Sorting ");
+		for(int i = 0; i< arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		
+		
+	}
+
+}

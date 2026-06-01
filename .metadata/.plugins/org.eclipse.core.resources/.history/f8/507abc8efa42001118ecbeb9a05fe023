@@ -1,0 +1,48 @@
+package com.nit.StreamProg;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+
+public class Program01_TraverseEle {
+
+	public static void main(String[] args) {
+
+		List<String> li = Arrays.asList("Hi", "My", "Name", "Vivek");
+		li.stream().forEach(System.out::println);
+		System.out.println("====================================================");
+		li.parallelStream().forEach(System.out::println);
+
+		System.out.println("====================================================");
+		int arr[] = { 29, 29, 290, 8, 38, 29, 59, 37, 46 };
+		IntStream stream = Arrays.stream(arr);
+		stream.forEach(System.out::println);
+		System.out.println("====================================================");
+
+		long a[] = { 29L, 29L, 290L, 8L, 38L, 29L, 59L, 37L };
+	  LongStream stream2 = Arrays.stream(a);
+		stream2.forEach(System.out::println);
+		System.out.println("====================================================");
+
+		double d[] = { 2d, 3d, 5d, 6d };
+		 DoubleStream stream3 = Arrays.stream(d);
+		stream3.forEach(System.out::println);
+		
+		System.out.println("====================================================");
+		
+		Stream.generate(()->(int)( Math.random() * 100)).limit(5).forEach(System.out::println);
+		System.out.println("====================================================");
+		
+		new java.util.Random() 
+	    .ints(10, 58, 100)
+	    .forEach(System.out::println);
+		System.out.println("====================================================");
+		
+		java.util.concurrent.ThreadLocalRandom.current().ints(10,81,120).forEach(System.out::println);
+		System.out.println("====================================================");
+	}
+
+}

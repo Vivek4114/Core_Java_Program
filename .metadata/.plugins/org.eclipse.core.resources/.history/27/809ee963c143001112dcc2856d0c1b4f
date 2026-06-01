@@ -1,0 +1,31 @@
+package com.nit.StreamProg;
+
+import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class Program05_Optional {
+	public static void main(String[] args) {
+		
+		
+//		int arr[] = {};
+//		
+//		  OptionalDouble avg = Arrays.stream(arr).average();
+//		System.out.println(avg.orElseGet(()->  (int)(  Math.random() * 100)));
+//		
+		
+		
+		
+		int ar[] = {29,39,394,93,394,393};
+		
+		
+		IntStream peek = Arrays.stream(ar).distinct().sorted().peek(s -> System.out.println(s))
+				.map(s -> s*s)
+				.peek(v -> System.out.println(v + " ")).collect(Collectors.toList());
+				;
+		//System.out.println(peek);
+	}
+
+}

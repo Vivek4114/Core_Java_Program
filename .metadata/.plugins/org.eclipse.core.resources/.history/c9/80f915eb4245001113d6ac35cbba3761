@@ -1,0 +1,18 @@
+package com.nit.terminalOperation;
+
+import java.util.Arrays;
+
+public class Program03_AnyMatch {
+	
+	public static void main(String[] args) {
+		
+		
+		String arr[] = {"Kalpana","Pooja","Darshana","Payal","Samiksha","Diksha","Savita"};
+		
+		
+	boolean result = 	Arrays.stream(arr).anyMatch(n -> n.startsWith("D"));
+	System.out.println(result);
+		
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.nit.PreparedStatement;
+
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.stream.*;
+
+public class Test05_SelectQuery {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Course Name Using '|' separator");
+		String str = sc.nextLine();
+		
+		String course[] = str.split("\\|");
+		
+		 
+		 String placeholder = Arrays.stream(course).map(s -> "?").toList();
+		 
+		
+		
+		 
+	}
+}

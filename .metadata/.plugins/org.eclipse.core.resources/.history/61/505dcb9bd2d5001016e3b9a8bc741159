@@ -1,0 +1,101 @@
+package com.nit.StreamApi;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+
+//WAP to create a list of products, each product has name, id, price. 
+//there may be chance that products are added into the list with same id.
+//filter out the unique products and display them
+public class Test05_ListOfProduct {
+	public static void main(String[] args) {
+		
+		List<Product1> ProdList = Arrays.asList(
+				new Product1("Electonic", 1, 20000),
+				new Product1("Clother", 1, 50000),
+				new Product1("Mixer", 2, 10000),
+				new Product1("TV", 2, 25000),
+				new Product1("Fan", 3, 70000)
+				);
+		
+		 ProdList.stream().
+		 sorted(Comparator.comparing(s->s.getProdId())).
+		 distinct().
+		 collect(Collectors.toList()).
+		 forEach(s-> System.out.println(s.getProdId()+" "+s.getProdName()));
+				
+		
+	}
+
+}
+
+class Product1{
+	String prodName;
+	int prodId;
+	double prodPrice;
+	public Product1(String prodName, int prodId, double prodPrice) {
+		super();
+		this.prodName = prodName;
+		this.prodId = prodId;
+		this.prodPrice = prodPrice;
+	}
+	public String getProdName() {
+		return prodName;
+	}
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+	public int getProdId() {
+		return prodId;
+	}
+	public void setProdId(int prodId) {
+		this.prodId = prodId;
+	}
+	public double getProdPrice() {
+		return prodPrice;
+	}
+	public void setProdPrice(double prodPrice) {
+		this.prodPrice = prodPrice;
+	}
+	
+	
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Product1 other = (Product1) obj;
+//		return prodId == other.prodId && Objects.equals(prodName, other.prodName)
+//				&& Double.doubleToLongBits(prodPrice) == Double.doubleToLongBits(other.prodPrice);
+//	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(prodId, prodName, prodPrice);
+	}
+	@Override
+	public boolean equals(Object o) {
+		if(this == o) {
+			return true;
+		}
+		
+		if(!(o instanceof Product1)) {
+			return false;
+		}
+		
+		Product1 p = (Product1) o;
+		return prodId == p.prodId;
+	}
+	@Override
+	public String toString() {
+		return "Product1 [prodName=" + prodName + ", prodId=" + prodId + ", prodPrice=" + prodPrice + "]";
+	}
+	
+	
+}

@@ -1,0 +1,27 @@
+package com.nit.practice15quetion;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+ //5. Find All Pairs with Given Sum
+//List<Integer> list = Arrays.asList(1,2,3,4,5,6);
+//int target = 7;
+//// [1,6], [2,5], [3,4]
+
+public class Program20 {
+	
+	public static void main(String[] args) {
+		List<Integer> list = Arrays.asList(12,33,56,7,79,99,00, 34, 56);
+		 
+		int res =  list.stream().flatMap(n -> String.valueOf(n).chars().mapToObj(c -> c-'0'))
+		.reduce(0,Integer::sum);
+		
+		System.out.println(res);
+	 
+		
+	}
+
+}

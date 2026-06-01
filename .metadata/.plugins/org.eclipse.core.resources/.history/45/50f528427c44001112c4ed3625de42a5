@@ -1,0 +1,27 @@
+package com.nit.staticMethodRef;
+
+import java.util.function.Supplier;
+
+class Animal{
+	public Animal() {
+		System.out.println("Animal.Animal( Constructor )");
+	}
+	
+	public void checkCondition() {
+		System.out.println("Animal.checkCondition()");
+	}
+}
+
+public class Program03_ConstructorRef {
+	
+	public static void main(String[] args) {
+		
+		Supplier<Animal> tt = Animal::new;
+		 Animal obj = tt.get();
+		 obj.checkCondition();
+		
+		System.out.println(tt);
+		
+	}
+
+}
