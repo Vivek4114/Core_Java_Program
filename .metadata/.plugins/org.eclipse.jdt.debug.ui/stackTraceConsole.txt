@@ -1,4 +1,0 @@
-stmt.executeUpdate("""
-    INSERT INTO course(course_id, course_name, course_fee)
-    VALUES(course_seq.NEXTVAL, 'html css', 2000)
-""");

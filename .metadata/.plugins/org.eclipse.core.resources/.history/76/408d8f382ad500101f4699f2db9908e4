@@ -1,5 +1,0 @@
-package com.nit.jdbc;
-
-public class Test_03_TryWithResource {
-
-}
